@@ -1,0 +1,62 @@
+<div *ngIf="contact" class="row">
+  <div class="col-md-12">
+    <h3 *ngIf="contact._id">Детали контакта</h3>
+    <h2 *ngIf="!contact._id">Новый контакт</h2>
+  </div>
+</div>
+
+<div *ngIf="contact" class="row">
+  <form class="col-md-12">
+    <div class="form-group">
+      <label for="username">Имя</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        [(ngModel)]="contact.username"
+        class="form-control"
+        placeholder="Name"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="email">Электронная почта</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        [(ngModel)]="contact.email"
+        class="form-control"
+        placeholder="Email"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="mobile">Мобильный телефон</label>
+      <input
+        type="text"
+        name="mobile"
+        id="mobile"
+        [(ngModel)]="contact.mobile"
+        class="form-control"
+        placeholder="Mobile Phone"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="home">Домашний телефон</label>
+      <input
+        type="text"
+        name="home"
+        id="home"
+        [(ngModel)]="contact.home"
+        class="form-control"
+        placeholder="Home Phone"
+      >
+    </div>
+
+    <button class="btn btn-primary" *ngIf="!contact._id" (click)="createContact(contact)">Создать контакт</button>
+    <button class="btn btn-info" *ngIf="contact._id" (click)="updateContact(contact)">Обновить контакт</button>
+    <button class="btn btn-danger" *ngIf="contact._id" (click)="deleteContact(contact._id)">Удалить контакт</button>
+  </form>
+</div>
